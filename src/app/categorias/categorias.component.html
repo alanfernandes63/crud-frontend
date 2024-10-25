@@ -1,0 +1,17 @@
+<div>
+    <h2>Gerenciamento de Categorias</h2>
+
+    <input [(ngModel)]="nome" placeholder="Nome da categoria" />
+    <button (click)="editingCategoryId ? updateCategory() : save()">
+        {{ editingCategoryId ? 'Atualizar' : 'Adicionar' }}
+    </button>
+    <button *ngIf="editingCategoryId" (click)="cancelEdit()">Cancelar</button>
+
+    <ul>
+        <li *ngFor="let categoria of categorias">
+            {{ categoria.nome }}
+            <button (click)="update(categoria.id)">Editar</button>
+            <button (click)="delete(categoria.id)">Deletar</button>
+        </li>
+    </ul>
+</div>

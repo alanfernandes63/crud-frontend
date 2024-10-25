@@ -1,0 +1,23 @@
+<div>
+    <h2>{{ isEditMode ? 'Atualizar Produto' : 'Cadastrar Produto' }}</h2>
+
+    <input [(ngModel)]="produto.nome" placeholder="Nome" required />
+    <input [(ngModel)]="produto.preco" placeholder="Preço" type="number" required />
+
+    <select [(ngModel)]="produto.idCategoria" required>
+        <option value="" disabled selected>Selecione uma categoria</option>
+        <option *ngFor="let categoria of categorias" [(ngValue)]="categoria.id">{{categoria.nome}}
+        </option>
+    </select>
+
+    <button (click)="adicionarProduto()">{{ isEditMode ? 'Atualizar' : 'Adicionar Produto' }}</button>
+
+    <h2>Lista de Produtos</h2>
+    <ul>
+        <li *ngFor=" let prod of produtos">
+            nome: {{ prod.nome }} - preço: {{ prod.preco }}
+            <button (click)="update(prod)">Editar</button>
+            <button (click)="deletarProduto(prod.id!)">Deletar</button>
+        </li>
+    </ul>
+</div>
